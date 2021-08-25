@@ -1,0 +1,10 @@
+# Binaries for programs and plugins
+main
+mpfr
+*.exe
+*.exe~
+*.so
+*.dylib
+*.dll
+mpfr_test
+*.o
