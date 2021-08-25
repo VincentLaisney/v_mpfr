@@ -1,0 +1,313 @@
+[94mmodule[39m [32mmpfr[39m
+
+[94mfn[39m [36mabs[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36macos[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36macosh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36madd_d[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mf64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36madd_q[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigrational[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36madd_si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36madd_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36madd_z[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36magm[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mai[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36masin[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36masinh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36matan[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36matan2[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36matanh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mbeta[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mbuildopt_decimal_p[39m() [32mint[39m
+[94mfn[39m [36mbuildopt_float128_p[39m() [32mint[39m
+[94mfn[39m [36mbuildopt_gmpinternals_p[39m() [32mint[39m
+[94mfn[39m [36mbuildopt_sharedcache_p[39m() [32mint[39m
+[94mfn[39m [36mbuildopt_tls_p[39m() [32mint[39m
+[94mfn[39m [36mbuildopt_tune_case[39m() &[32mchar[39m
+[94mfn[39m [36mcan_round[39m(a [32mBigfloat[39m, err [32mi64[39m, r1 [32mRound[39m, r2 [32mRound[39m, p [32mMpfr_prec[39m) [32mint[39m
+[94mfn[39m [36mcbrt[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mceil[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mcheck_range[39m(a [32mBigfloat[39m, b [32mint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mclear[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mclear_divby0[39m()
+[94mfn[39m [36mclear_erangeflag[39m()
+[94mfn[39m [36mclear_flags[39m()
+[94mfn[39m [36mclear_inexflag[39m()
+[94mfn[39m [36mclear_nanflag[39m()
+[94mfn[39m [36mclear_overflow[39m()
+[94mfn[39m [36mclear_underflow[39m()
+[94mfn[39m [36mcmp[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mcmp3[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mint[39m) [32mint[39m
+[94mfn[39m [36mcmp_d[39m(a [32mBigfloat[39m, f [32mf64[39m) [32mint[39m
+[94mfn[39m [36mcmp_f[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mcmp_q[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigrational[39m) [32mint[39m
+[94mfn[39m [36mcmp_si[39m(a [32mBigfloat[39m, i [32mi64[39m) [32mint[39m
+[94mfn[39m [36mcmp_si_2exp[39m(a [32mBigfloat[39m, i [32mi64[39m, j [32mi64[39m) [32mint[39m
+[94mfn[39m [36mcmp_ui[39m(a [32mBigfloat[39m, u [32mu64[39m) [32mint[39m
+[94mfn[39m [36mcmp_ui_2exp[39m(a [32mBigfloat[39m, u [32mu64[39m, e [32mi64[39m) [32mint[39m
+[94mfn[39m [36mcmp_z[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigint[39m) [32mint[39m
+[94mfn[39m [36mcmpabs[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mcmpabs_ui[39m(a [32mBigfloat[39m, u [32mu64[39m) [32mint[39m
+[94mfn[39m [36mconst_catalan[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mconst_euler[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mconst_log2[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mconst_pi[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcopysign[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcos[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcosh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcot[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcoth[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcsc[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcsch[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mcustom_get_exp[39m(a [32mBigfloat[39m) [32mi64[39m
+[94mfn[39m [36mcustom_get_kind[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mcustom_get_significand[39m(a [32mBigfloat[39m) [32mvoidptr[39m
+[94mfn[39m [36mcustom_get_size[39m(p [32mMpfr_prec[39m) [32mu64[39m
+[94mfn[39m [36mcustom_init[39m(ptr [32mvoidptr[39m, p [32mMpfr_prec[39m)
+[94mfn[39m [36mcustom_init_set[39m(a [32mBigfloat[39m, k [32mint[39m, e [32mi64[39m, p [32mMpfr_prec[39m, ptr [32mvoidptr[39m)
+[94mfn[39m [36mcustom_move[39m(a [32mBigfloat[39m, ptr [32mvoidptr[39m)
+[94mfn[39m [36md_div[39m(a [32mBigfloat[39m, f [32mf64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36md_sub[39m(a [32mBigfloat[39m, f [32mf64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdigamma[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdim[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_2exp[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_2si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_2ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_ctx[39m(b [32mBigfloat[39m, c [32mBigfloat[39m, ctx [32mMathContext[39m) [32mBigfloat[39m
+[94mfn[39m [36mdiv_d[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mf64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_q[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigrational[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdiv_z[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mdivby0_p[39m() [32mbool[39m
+[94mfn[39m [36mdot[39m(a [32mBigfloat[39m, b &[32mBigfloat[39m, c &[32mBigfloat[39m, n [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36meint[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36meq[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m) [32mint[39m
+[94mfn[39m [36mequal_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36merandom[39m(a [32mBigfloat[39m, st [94mgmp[39m.[32mRandstate[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36merangeflag_p[39m() [32mbool[39m
+[94mfn[39m [36merf[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36merfc[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mexp[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mexp10[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mexp2[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mexpm1[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mextract[39m(a [94mgmp[39m.[32mBigint[39m, s [32mBigfloat[39m, u [32mu32[39m)
+[94mfn[39m [36mfac_ui[39m(a [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_intmax_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_sint_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_slong_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_sshort_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_uint_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_uintmax_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_ulong_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfits_ushort_p[39m(a [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mflags_clear[39m(f [32mu32[39m)
+[94mfn[39m [36mflags_restore[39m(f [32mu32[39m, g [32mu32[39m)
+[94mfn[39m [36mflags_save[39m() [32mu32[39m
+[94mfn[39m [36mflags_set[39m(f [32mu32[39m)
+[94mfn[39m [36mflags_test[39m(f [32mu32[39m) [32mu32[39m
+[94mfn[39m [36mfloor[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mfma[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, d [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfmma[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, d [32mBigfloat[39m, e [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfmms[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, d [32mBigfloat[39m, e [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfmod[39m(b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mBigfloat[39m
+[94mfn[39m [36mfmodquo[39m(a [32mBigfloat[39m, i &[32mi64[39m, g [32mBigfloat[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfms[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, d [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfrac[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfree_cache[39m()
+[94mfn[39m [36mfree_cache2[39m(c [35mC[39m.[32mmpfr_free_cache_t[39m)
+[94mfn[39m [36mfree_pool[39m()
+[94mfn[39m [36mfree_str[39m(s &[32mchar[39m)
+[94mfn[39m [36mfrexp[39m(e &[32mi64[39m, g [32mBigfloat[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mfrom_f32[39m(f [32mf32[39m) [32mBigfloat[39m
+[94mfn[39m [36mfrom_f64[39m(d [32mf64[39m) [32mBigfloat[39m
+[94mfn[39m [36mfrom_i64[39m(i [32mi64[39m) [32mBigfloat[39m
+[94mfn[39m [36mfrom_str[39m(s [32mstring[39m) ?[32mBigfloat[39m
+[94mfn[39m [36mfrom_u64[39m(u [32mu64[39m) [32mBigfloat[39m
+[94mfn[39m [36mgamma[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mgamma_inc[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mget_d1[39m(a [32mBigfloat[39m) [32mf64[39m
+[94mfn[39m [36mget_d_2exp[39m(e &[32mi64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mf64[39m
+[94mfn[39m [36mget_def_math_ctx[39m() [32mMathContext[39m
+[94mfn[39m [36mget_def_print_ctx[39m() [32mPrintContext[39m
+[94mfn[39m [36mget_default_prec[39m() [32mi64[39m
+[94mfn[39m [36mget_default_rounding_mode[39m() [32mRound[39m
+[94mfn[39m [36mget_emax[39m() [32mi64[39m
+[94mfn[39m [36mget_emax_max[39m() [32mi64[39m
+[94mfn[39m [36mget_emax_min[39m() [32mi64[39m
+[94mfn[39m [36mget_emin[39m() [32mi64[39m
+[94mfn[39m [36mget_emin_max[39m() [32mi64[39m
+[94mfn[39m [36mget_emin_min[39m() [32mi64[39m
+[94mfn[39m [36mget_exp[39m(a [32mBigfloat[39m) [32mi64[39m
+[94mfn[39m [36mget_f[39m([94mmut[39m a [94mgmp[39m.[32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mget_patches[39m() &[32mchar[39m
+[94mfn[39m [36mget_prec[39m(a [32mBigfloat[39m) [32mi64[39m
+[94mfn[39m [36mget_q[39m(a [94mgmp[39m.[32mBigrational[39m, b [32mBigfloat[39m)
+[94mfn[39m [36mget_retval[39m() [32mint[39m
+[94mfn[39m [36mget_str_ndigits[39m(n [32mint[39m, p [32mMpfr_prec[39m) [32mu64[39m
+[94mfn[39m [36mget_version[39m() &[32mchar[39m
+[94mfn[39m [36mget_z[39m(a [94mgmp[39m.[32mBigint[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mget_z_2exp[39m(a [94mgmp[39m.[32mBigint[39m, s [32mBigfloat[39m) [32mi64[39m
+[94mfn[39m [36mgrandom[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, st [94mgmp[39m.[32mRandstate[39m, r [32mRound[39m)
+[94mfn[39m [36mgreater_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mgreaterequal_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mhypot[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36minexflag_p[39m() [32mbool[39m
+[94mfn[39m [36minf_p[39m(a [32mBigfloat[39m) [32mbool[39m
+[94mfn[39m [36minit2[39m(a [32mBigfloat[39m, p [32mMpfr_prec[39m)
+[94mfn[39m [36minteger_p[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mj0[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mj1[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mjn[39m(a [32mBigfloat[39m, i [32mi64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mless_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mlessequal_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mlessgreater_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mlgamma[39m(a [32mBigfloat[39m, i &[32mint[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mli2[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlngamma[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlog[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlog10[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlog1p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlog2[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mlog_ui[39m(a [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmax[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmin[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmin_prec[39m(a [32mBigfloat[39m) [32mi64[39m
+[94mfn[39m [36mmodf[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmp_memory_cleanup[39m() [32mint[39m
+[94mfn[39m [36mmpfr_dump[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mmpfr_init[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mmul_2exp[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_2si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_2ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_d[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mf64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_q[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigrational[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mmul_z[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mnan_p[39m(a [32mBigfloat[39m) [32mbool[39m
+[94mfn[39m [36mnanflag_p[39m() [32mbool[39m
+[94mfn[39m [36mneg[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mnew[39m() [32mBigfloat[39m
+[94mfn[39m [36mnextabove[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mnextbelow[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mnexttoward[39m(a [32mBigfloat[39m, b [32mBigfloat[39m)
+[94mfn[39m [36mnrandom[39m(a [32mBigfloat[39m, st [94mgmp[39m.[32mRandstate[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mnumber_p[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36moverflow_p[39m() [32mbool[39m
+[94mfn[39m [36mpow[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mpow_si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mpow_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mpow_z[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mprec_round[39m(a [32mBigfloat[39m, p [32mMpfr_prec[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mprint_rnd_mode[39m(rnd [32mRound[39m) &[32mchar[39m
+[94mfn[39m [36mrec_sqrt[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mregular_p[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mreldiff[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m)
+[94mfn[39m [36mremainder[39m(b [32mBigfloat[39m, c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m [36mremquo[39m(a [32mBigfloat[39m, i &[32mi64[39m, g [32mBigfloat[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrint[39m(b [32mBigfloat[39m, r [32mRound[39m) [32mBigfloat[39m
+[94mfn[39m [36mrint_ceil[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrint_floor[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrint_round[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrint_roundeven[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrint_trunc[39m(b [32mBigfloat[39m, r [32mRound[39m) [32mBigfloat[39m
+[94mfn[39m [36mroot[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mrootn_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mround[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mround_nearest_away_begin[39m(a [32mBigfloat[39m)
+[94mfn[39m [36mround_nearest_away_end[39m(a [32mBigfloat[39m, i [32mint[39m) [32mint[39m
+[94mfn[39m [36mroundeven[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36msec[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msech[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset4[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m, f [32mint[39m) [32mint[39m
+[94mfn[39m [36mset_default_prec[39m(p [32mMpfr_prec[39m)
+[94mfn[39m [36mset_default_rounding_mode[39m(rnd [32mRound[39m)
+[94mfn[39m [36mset_divby0[39m()
+[94mfn[39m [36mset_emax[39m(e [32mi64[39m) [32mint[39m
+[94mfn[39m [36mset_emin[39m(e [32mi64[39m) [32mint[39m
+[94mfn[39m [36mset_erangeflag[39m()
+[94mfn[39m [36mset_exp[39m([94mmut[39m a [32mBigfloat[39m, e [32mi64[39m) [32mint[39m
+[94mfn[39m [36mset_f[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_inexflag[39m()
+[94mfn[39m [36mset_inf[39m([94mmut[39m a [32mBigfloat[39m, neg [32mbool[39m)
+[94mfn[39m [36mset_nan[39m([94mmut[39m a [32mBigfloat[39m)
+[94mfn[39m [36mset_nanflag[39m()
+[94mfn[39m [36mset_overflow[39m()
+[94mfn[39m [36mset_prec[39m(a [32mBigfloat[39m, p [32mMpfr_prec[39m)
+[94mfn[39m [36mset_prec_raw[39m(a [32mBigfloat[39m, p [32mMpfr_prec[39m)
+[94mfn[39m [36mset_q[39m([94mmut[39m a [32mBigfloat[39m, b [94mgmp[39m.[32mBigrational[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_retval[39m(r [32mint[39m)
+[94mfn[39m [36mset_si_2exp[39m([94mmut[39m a [32mBigfloat[39m, i [32mi64[39m, e [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_str[39m(a [32mBigfloat[39m, s &[32mchar[39m, b [32mint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_ui_2exp[39m([94mmut[39m a [32mBigfloat[39m, u [32mu64[39m, e [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_underflow[39m()
+[94mfn[39m [36mset_z[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_z_2exp[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigint[39m, e [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mset_zero[39m([94mmut[39m a [32mBigfloat[39m, neg [32mbool[39m)
+[94mfn[39m [36msetsign[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msgn[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36msi_div[39m(a [32mBigfloat[39m, i [32mi64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msi_sub[39m(a [32mBigfloat[39m, i [32mi64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msignbit[39m(a [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36msin[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msin_cos[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msinh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msinh_cosh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msqr[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msqrt[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msqrt_ui[39m(a [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mstrtofr[39m(a [32mBigfloat[39m, s &[32mchar[39m, d &&[32mchar[39m, b [32mint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msub_d[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mf64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msub_q[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigrational[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msub_si[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, i [32mi64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msub_ui[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msub_z[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, c [94mgmp[39m.[32mBigint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msubnormalize[39m(a [32mBigfloat[39m, i [32mint[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36msum[39m(a [32mBigfloat[39m, b &[32mBigfloat[39m, n [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mswap[39m(a [32mBigfloat[39m, b [32mBigfloat[39m)
+[94mfn[39m [36mtan[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mtanh[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mtotal_order_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mtrunc[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36mui_div[39m(a [32mBigfloat[39m, u [32mu64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mui_pow[39m(a [32mBigfloat[39m, u [32mu64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mui_pow_ui[39m(a [32mBigfloat[39m, u [32mu64[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mui_sub[39m(a [32mBigfloat[39m, u [32mu64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36munderflow_p[39m() [32mbool[39m
+[94mfn[39m [36munordered_p[39m(a [32mBigfloat[39m, b [32mBigfloat[39m) [32mint[39m
+[94mfn[39m [36murandom[39m([94mmut[39m a [32mBigfloat[39m, [94mmut[39m st [94mgmp[39m.[32mRandstate[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36murandomb[39m(a [32mBigfloat[39m, st [94mgmp[39m.[32mRandstate[39m) [32mint[39m
+[94mfn[39m [36my0[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36my1[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36myn[39m(a [32mBigfloat[39m, i [32mi64[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mz_sub[39m(a [32mBigfloat[39m, b [94mgmp[39m.[32mBigint[39m, s [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mzero_p[39m(a [32mBigfloat[39m) [32mbool[39m
+[94mfn[39m [36mzeta[39m(a [32mBigfloat[39m, b [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m [36mzeta_ui[39m(a [32mBigfloat[39m, f [32mu64[39m, r [32mRound[39m) [32mint[39m
+[94mfn[39m (a [32mBigfloat[39m) [36mf32[39m() [32mf32[39m
+[94mfn[39m (a [32mBigfloat[39m) [36mf64[39m() [32mf64[39m
+[94mfn[39m (a [32mBigfloat[39m) [36mi64[39m() [32mi64[39m
+[94mfn[39m (a [32mBigfloat[39m) [36mu64[39m() [32mu64[39m
+[94mfn[39m (s [32mBigfloat[39m) [36mstr_ctx[39m(ctx [32mPrintContext[39m) [32mstring[39m
+[94mfn[39m (a [32mBigfloat[39m) [36mstr[39m() [32mstring[39m
+[94mfn[39m (b [32mBigfloat[39m) + (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (b [32mBigfloat[39m) - (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (b [32mBigfloat[39m) * (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (b [32mBigfloat[39m) / (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (b [32mBigfloat[39m) % (c [32mBigfloat[39m) [32mBigfloat[39m
+[94menum[39m [32mRound[39m {
+	rndn = [94m0[39m
+	rndz
+	rndu
+	rndd
+	rnda
+	rndf
+	rndna = -[94m1[39m
+}
+[94mstruct[39m [32mPrintContext[39m {
+[94mpub[39m [94mmut[39m:
+	base    [32mint[39m
+	ndigits [32mu64[39m
+	rnd     [32mRound[39m
+}
