@@ -259,3 +259,54 @@ fn test_divrem () {
 	assert ! mpfr.erangeflag_p()
 	assert ! mpfr.inexflag_p()
 }
+
+fn test_sqr () {
+	mpfr.clear_flags()
+	a := mpfr.from_f64(3469.23)
+	b := mpfr.sqr(a)
+	assert b.str() == '12035556.7929'
+	assert ! mpfr.divby0_p()
+	assert ! mpfr.underflow_p()
+	assert ! mpfr.overflow_p()
+	assert ! mpfr.nanflag_p()
+}
+
+fn test_sqrt () {
+	mpfr.clear_flags()
+	a := mpfr.from_f64(12035556.7929)
+	b := mpfr.sqrt(a)
+	assert b.str() == '3469.23'
+	assert mpfr.get_retval() == 1 // UP rounding
+	assert mpfr.inexflag_p() // inexact
+	assert ! mpfr.divby0_p()
+	assert ! mpfr.underflow_p()
+	assert ! mpfr.overflow_p()
+	assert ! mpfr.nanflag_p()
+
+	mpfr.clear_flags()
+	c := mpfr.from_u64(7429053)
+	d := mpfr.sqrt(c)
+	assert d.str() == '2725.628918249878'
+
+	mpfr.clear_flags()
+	e := mpfr.sqrt_u64(2)
+	assert e.str() == '1.414213562373095'
+}
+
+fn test_pow () {
+	mpfr.clear_flags()
+	a := mpfr.from_f64(23.85)
+	b := mpfr.from_u64(42)
+	c := mpfr.pow(a, b)
+	assert '$c' == '7.153393270274732e57'
+
+	d := mpfr.pow_u64(a, 42)
+	assert '$c' == '7.153393270274732e57'
+
+	e := mpfr.pow_i64(a, -5)
+	f := mpfr.from_u64(1) / mpfr.pow(a, mpfr.from_u64(5))
+	// println(' $e == $f')
+	assert '$e' == '$f'
+	assert mpfr.cmp(e, f) == 0
+
+}
