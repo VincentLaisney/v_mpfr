@@ -638,7 +638,7 @@ pub fn from_u64 (u u64) Bigfloat {
 
 fn C.mpfr_set_si_2exp (&Bigfloat, i64, i64, Round) int
 
-pub fn set_si_2exp (i i64, e i64, r Round) Bigfloat {
+pub fn set_i64_2exp (i i64, e i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_set_si_2exp (&a, i, e, r)
@@ -648,7 +648,7 @@ pub fn set_si_2exp (i i64, e i64, r Round) Bigfloat {
 
 fn C.mpfr_set_ui_2exp (&Bigfloat, u64, i64, Round) int
 
-pub fn set_ui_2exp (u u64, e i64, r Round) Bigfloat {
+pub fn set_u64_2exp (u u64, e i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_set_ui_2exp (&a, u, e, r)
@@ -844,7 +844,7 @@ pub fn get_d1 (a Bigfloat) f64 {
 
 fn C.mpfr_get_d_2exp (&i64, &Bigfloat, Round) f64
 
-pub fn get_d_2exp (e &i64, s Bigfloat, r Round) f64 {
+pub fn get_f64_2exp (e &i64, s Bigfloat, r Round) f64 {
 	return C.mpfr_get_d_2exp (e, &s, r)
 }
 
@@ -1089,7 +1089,7 @@ pub fn pow (b Bigfloat, c Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_pow_si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn pow_si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn pow_i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_pow_si (&a, &b, i, r)
@@ -1099,7 +1099,7 @@ pub fn pow_si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_pow_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn pow_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn pow_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_pow_ui (&a, &b, f, r)
@@ -1109,7 +1109,7 @@ pub fn pow_ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_ui_pow_ui (&Bigfloat, u64, u64, Round) int
 
-pub fn ui_pow_ui (u u64, f u64, r Round) Bigfloat {
+pub fn u64_pow_u64 (u u64, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_ui_pow_ui (&a, u, f, r)
@@ -1119,7 +1119,7 @@ pub fn ui_pow_ui (u u64, f u64, r Round) Bigfloat {
 
 fn C.mpfr_ui_pow (&Bigfloat, u64, &Bigfloat, Round) int
 
-pub fn ui_pow (u u64, s Bigfloat, r Round) Bigfloat {
+pub fn u64_pow (u u64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_ui_pow (&a, u, &s, r)
@@ -1150,7 +1150,7 @@ pub fn sqrt (b Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_sqrt_ui (&Bigfloat, u64, Round) int
 
-pub fn sqrt_ui (f u64, r Round) Bigfloat {
+pub fn sqrt_u64 (f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sqrt_ui (&a, f, r)
@@ -1218,7 +1218,7 @@ pub fn div_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
 
 fn C.mpfr_add_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn add_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn add_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_add_ui (&a, &b, f, r)
@@ -1228,7 +1228,7 @@ pub fn add_ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_sub_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn sub_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn sub_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sub_ui (&a, &b, f, r)
@@ -1238,7 +1238,7 @@ pub fn sub_ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_ui_sub (&Bigfloat, u64, &Bigfloat, Round) int
 
-pub fn ui_sub (u u64, s Bigfloat, r Round) Bigfloat {
+pub fn u64_sub (u u64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_ui_sub (&a, u, &s, r)
@@ -1248,7 +1248,7 @@ pub fn ui_sub (u u64, s Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_mul_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn mul_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn mul_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_mul_ui (&a, &b, f, r)
@@ -1258,7 +1258,7 @@ pub fn mul_ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_div_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn div_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn div_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_div_ui (&a, &b, f, r)
@@ -1268,7 +1268,7 @@ pub fn div_ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_ui_div (&Bigfloat, u64, &Bigfloat, Round) int
 
-pub fn ui_div (u u64, s Bigfloat, r Round) Bigfloat {
+pub fn u64_div (u u64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_ui_div (&a, u, &s, r)
@@ -1279,7 +1279,7 @@ pub fn ui_div (u u64, s Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_add_si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn add_si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn add_i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_add_si (&a, &b, i, r)
@@ -1289,7 +1289,7 @@ pub fn add_si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_sub_si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn sub_si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn sub_i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sub_si (&a, &b, i, r)
@@ -1299,7 +1299,7 @@ pub fn sub_si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_si_sub (&Bigfloat, i64, &Bigfloat, Round) int
 
-pub fn si_sub (i i64, s Bigfloat, r Round) Bigfloat {
+pub fn i64_sub (i i64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_si_sub (&a, i, &s, r)
@@ -1309,7 +1309,7 @@ pub fn si_sub (i i64, s Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_mul_si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn mul_si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn mul_i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_mul_si (&a, &b, i, r)
@@ -1319,7 +1319,7 @@ pub fn mul_si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_div_si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn div_si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn div_i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_div_si (&a, &b, i, r)
@@ -1329,7 +1329,7 @@ pub fn div_si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_si_div (&Bigfloat, i64, &Bigfloat, Round) int
 
-pub fn si_div (i i64, s Bigfloat, r Round) Bigfloat {
+pub fn i64_div (i i64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_si_div (&a, i, &s, r)
@@ -1340,7 +1340,7 @@ pub fn si_div (i i64, s Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_add_d (&Bigfloat, &Bigfloat, f64, Round) int
 
-pub fn add_d (b Bigfloat, f f64, r Round) Bigfloat {
+pub fn add_f64 (b Bigfloat, f f64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_add_d (&a, &b, f, r)
@@ -1350,7 +1350,7 @@ pub fn add_d (b Bigfloat, f f64, r Round) Bigfloat {
 
 fn C.mpfr_sub_d (&Bigfloat, &Bigfloat, f64, Round) int
 
-pub fn sub_d (b Bigfloat, f f64, r Round) Bigfloat {
+pub fn sub_f64 (b Bigfloat, f f64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sub_d (&a, &b, f, r)
@@ -1360,7 +1360,7 @@ pub fn sub_d (b Bigfloat, f f64, r Round) Bigfloat {
 
 fn C.mpfr_d_sub (&Bigfloat, f64, &Bigfloat, Round) int
 
-pub fn d_sub (f f64, s Bigfloat, r Round) Bigfloat {
+pub fn f64_sub (f f64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_d_sub (&a, f, &s, r)
@@ -1370,7 +1370,7 @@ pub fn d_sub (f f64, s Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_mul_d (&Bigfloat, &Bigfloat, f64, Round) int
 
-pub fn mul_d (b Bigfloat, f f64, r Round) Bigfloat {
+pub fn mul_f64 (b Bigfloat, f f64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_mul_d (&a, &b, f, r)
@@ -1380,7 +1380,7 @@ pub fn mul_d (b Bigfloat, f f64, r Round) Bigfloat {
 
 fn C.mpfr_div_d (&Bigfloat, &Bigfloat, f64, Round) int
 
-pub fn div_d (b Bigfloat, f f64, r Round) Bigfloat {
+pub fn div_f64 (b Bigfloat, f f64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_div_d (&a, &b, f, r)
@@ -1390,7 +1390,7 @@ pub fn div_d (b Bigfloat, f f64, r Round) Bigfloat {
 
 fn C.mpfr_d_div (&Bigfloat, f64, &Bigfloat, Round) int
 
-pub fn d_div (f f64, s Bigfloat, r Round) Bigfloat {
+pub fn f64_div (f f64, s Bigfloat, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_d_div (&a, f, &s, r)
@@ -1504,7 +1504,7 @@ pub fn log1p (b Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_log_ui (&Bigfloat, u64, Round) int
 
-pub fn log_ui (f u64, r Round) Bigfloat {
+pub fn log_u64 (f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_log_ui (&a, f, r)
@@ -1588,7 +1588,7 @@ pub fn cmp3 (a Bigfloat, b Bigfloat, i int) int {
 
 fn C.mpfr_cmp_d (&Bigfloat, f64) int
 
-pub fn cmp_d (a Bigfloat, f f64) int {
+pub fn cmp_f64 (a Bigfloat, f f64) int {
 	return C.mpfr_cmp_d (&a, f)
 }
 
@@ -1600,25 +1600,25 @@ pub fn cmp_d (a Bigfloat, f f64) int {
 
 fn C.mpfr_cmp_ui (&Bigfloat, u64) int
 
-pub fn cmp_ui (a Bigfloat, u u64) int {
+pub fn cmp_u64 (a Bigfloat, u u64) int {
 	return C.mpfr_cmp_ui (&a, u)
 }
 
 fn C.mpfr_cmp_si (&Bigfloat, i64) int
 
-pub fn cmp_si (a Bigfloat, i i64) int {
+pub fn cmp_i64 (a Bigfloat, i i64) int {
 	return C.mpfr_cmp_si (&a, i)
 }
 
 fn C.mpfr_cmp_ui_2exp (&Bigfloat, u64, i64) int
 
-pub fn cmp_ui_2exp (a Bigfloat, u u64, e i64) int {
+pub fn cmp_u64_2exp (a Bigfloat, u u64, e i64) int {
 	return C.mpfr_cmp_ui_2exp (&a, u, e)
 }
 
 fn C.mpfr_cmp_si_2exp (&Bigfloat, i64, i64) int
 
-pub fn cmp_si_2exp (a Bigfloat, i i64, j i64) int {
+pub fn cmp_i64_2exp (a Bigfloat, i i64, j i64) int {
 	return C.mpfr_cmp_si_2exp (&a, i, j)
 }
 
@@ -1630,7 +1630,7 @@ pub fn cmpabs (a Bigfloat, b Bigfloat) int {
 
 fn C.mpfr_cmpabs_ui (&Bigfloat, u64) int
 
-pub fn cmpabs_ui (a Bigfloat, u u64) int {
+pub fn cmpabs_u64 (a Bigfloat, u u64) int {
 	return C.mpfr_cmpabs_ui (&a, u)
 }
 
@@ -1675,7 +1675,7 @@ pub fn div_2exp (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_mul_2ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn mul_2ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn mul_2u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_mul_2ui (&a, &b, f, r)
@@ -1685,7 +1685,7 @@ pub fn mul_2ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_div_2ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn div_2ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn div_2u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_div_2ui (&a, &b, f, r)
@@ -1695,7 +1695,7 @@ pub fn div_2ui (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_mul_2si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn mul_2si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn mul_2i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_mul_2si (&a, &b, i, r)
@@ -1705,7 +1705,7 @@ pub fn mul_2si (b Bigfloat, i i64, r Round) Bigfloat {
 
 fn C.mpfr_div_2si (&Bigfloat, &Bigfloat, i64, Round) int
 
-pub fn div_2si (b Bigfloat, i i64, r Round) Bigfloat {
+pub fn div_2i64 (b Bigfloat, i i64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_div_2si (&a, &b, i, r)
@@ -2306,7 +2306,7 @@ pub fn root (b Bigfloat, f u64, r Round) Bigfloat {
 
 fn C.mpfr_rootn_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
-pub fn rootn_ui (b Bigfloat, f u64, r Round) Bigfloat {
+pub fn rootn_u64 (b Bigfloat, f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_rootn_ui (&a, &b, f, r)
@@ -2386,7 +2386,7 @@ pub fn zeta (b Bigfloat, r Round) Bigfloat {
 
 fn C.mpfr_zeta_ui (&Bigfloat, u64, Round) int
 
-pub fn zeta_ui (f u64, r Round) Bigfloat {
+pub fn zeta_u64 (f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_zeta_ui (&a, f, r)
@@ -2396,7 +2396,7 @@ pub fn zeta_ui (f u64, r Round) Bigfloat {
 
 fn C.mpfr_fac_ui (&Bigfloat, u64, Round) int
 
-pub fn fac_ui (f u64, r Round) Bigfloat {
+pub fn fac_u64 (f u64, r Round) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_fac_ui (&a, f, r)
