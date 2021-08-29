@@ -16,7 +16,6 @@ Most of the routines taking a pointer to the result as first argument return ins
 
 ## Dependencies ##
 Mpfr depends of gmp.
-Use the _float_ branch of v_gmp for now until it is merged in the _main_ branch.
 
 
 ## Licence ##
