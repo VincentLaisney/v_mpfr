@@ -190,9 +190,6 @@
 <li class="open"><a href="#const_log2">fn const_log2</a>        <ul>
 </ul>
 </li>
-<li class="open"><a href="#const_pi">fn const_pi</a>        <ul>
-</ul>
-</li>
 <li class="open"><a href="#copysign">fn copysign</a>        <ul>
 </ul>
 </li>
@@ -631,6 +628,9 @@
 <li class="open"><a href="#overflow_p">fn overflow_p</a>        <ul>
 </ul>
 </li>
+<li class="open"><a href="#pi">fn pi</a>        <ul>
+</ul>
+</li>
 <li class="open"><a href="#pow">fn pow</a>        <ul>
 </ul>
 </li>
@@ -909,7 +909,9 @@
 <li><a href="#Bigfloat.-">fn -</a></li>
 <li><a href="#Bigfloat.*">fn *</a></li>
 <li><a href="#Bigfloat./">fn /</a></li>
+<li><a href="#Bigfloat.==">fn ==</a></li>
 <li><a href="#Bigfloat.%">fn %</a></li>
+<li><a href="#Bigfloat.<">fn <</a></li>
 </ul>
 </li>
 <li class="open"><a href="#Mpfr_exp">type Mpfr_exp</a>        <ul>
@@ -1178,11 +1180,6 @@
 </section>
 						<section id="const_log2" class="doc-node">
 							<div class="title"><h2>fn const_log2 <a href="#const_log2">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">const_log2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Bigfloat</code></pre>
-
-
-</section>
-						<section id="const_pi" class="doc-node">
-							<div class="title"><h2>fn const_pi <a href="#const_pi">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">const_pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Bigfloat</code></pre>
 
 
 </section>
@@ -1916,6 +1913,11 @@
 
 
 </section>
+						<section id="pi" class="doc-node">
+							<div class="title"><h2>fn pi <a href="#pi">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">pi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
 						<section id="pow" class="doc-node">
 							<div class="title"><h2>fn pow <a href="#pow">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">pow</span><span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">,</span> c Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
 
@@ -2192,7 +2194,7 @@
 
 </section>
 						<section id="sin_cos" class="doc-node">
-							<div class="title"><h2>fn sin_cos <a href="#sin_cos">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">sin_cos</span><span class="token punctuation">(</span><span class="token keyword">mut</span> b Bigfloat<span class="token punctuation">,</span> c Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+							<div class="title"><h2>fn sin_cos <a href="#sin_cos">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">sin_cos</span><span class="token punctuation">(</span>c Bigfloat<span class="token punctuation">)</span> <span class="token punctuation">(</span>Bigfloat<span class="token punctuation">,</span> Bigfloat<span class="token punctuation">)</span></code></pre>
 
 
 </section>
@@ -2202,7 +2204,7 @@
 
 </section>
 						<section id="sinh_cosh" class="doc-node">
-							<div class="title"><h2>fn sinh_cosh <a href="#sinh_cosh">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">sinh_cosh</span><span class="token punctuation">(</span><span class="token keyword">mut</span> b Bigfloat<span class="token punctuation">,</span> c Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+							<div class="title"><h2>fn sinh_cosh <a href="#sinh_cosh">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token function">sinh_cosh</span><span class="token punctuation">(</span>c Bigfloat<span class="token punctuation">)</span> <span class="token punctuation">(</span>Bigfloat<span class="token punctuation">,</span> Bigfloat<span class="token punctuation">)</span></code></pre>
 
 
 </section>
@@ -2416,8 +2418,18 @@
 
 
 </section>
+						<section id="Bigfloat.==" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) == <a href="#Bigfloat.==">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> <span class="token builtin">bool</span></code></pre>
+
+
+</section>
 						<section id="Bigfloat.%" class="doc-node">
 							<div class="title"><h2>fn (Bigfloat) % <a href="#Bigfloat.%">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token punctuation">(</span>c Bigfloat<span class="token punctuation">)</span> Bigfloat</code></pre>
+
+
+</section>
+						<section id="Bigfloat.<" class="doc-node">
+							<div class="title"><h2>fn (Bigfloat) < <a href="#Bigfloat.<">#</a></h2></div><pre class="signature"><code><span class="token keyword">fn</span> <span class="token punctuation">(</span>a Bigfloat<span class="token punctuation">)</span> <span class="token operator"><</span> <span class="token punctuation">(</span>b Bigfloat<span class="token punctuation">)</span> <span class="token builtin">bool</span></code></pre>
 
 
 </section>
@@ -2456,7 +2468,7 @@
 </section>
 
 						<div class="footer">
-							Powered by vdoc. Generated on: 26 Aug 2021 11:09:22
+							Powered by vdoc. Generated on: 29 Aug 2021 04:46:40
 						</div>
 					</div>
 					

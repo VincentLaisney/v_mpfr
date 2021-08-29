@@ -1404,7 +1404,7 @@ pub fn sqr (b Bigfloat) Bigfloat {
 
 fn C.mpfr_const_pi (&Bigfloat, Round) int
 
-pub fn const_pi () Bigfloat {
+pub fn pi () Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_const_pi (&a, ctx.rnd)
@@ -1570,6 +1570,10 @@ fn C.mpfr_cmp  (&Bigfloat, &Bigfloat) int
 
 pub fn cmp  (a Bigfloat, b Bigfloat) int {
 	return C.mpfr_cmp  (&a, &b)
+}
+
+pub fn (a Bigfloat) == (b Bigfloat) bool {
+	return C.mpfr_cmp  (&a, &b) == 0
 }
 
 fn C.mpfr_cmp3 (&Bigfloat, &Bigfloat, int) int
@@ -2000,6 +2004,10 @@ pub fn less_p (a Bigfloat, b Bigfloat) int {
 	return C.mpfr_less_p (&a, &b)
 }
 
+pub fn (a Bigfloat) < (b Bigfloat) bool {
+	return C.mpfr_less_p (&a, &b) == 1
+}
+
 fn C.mpfr_lessequal_p (&Bigfloat, &Bigfloat) int
 
 pub fn lessequal_p (a Bigfloat, b Bigfloat) int {
@@ -2087,12 +2095,13 @@ pub fn tanh (b Bigfloat) Bigfloat {
 
 fn C.mpfr_sinh_cosh (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
-pub fn sinh_cosh (mut b Bigfloat, c Bigfloat) Bigfloat {
+pub fn sinh_cosh (c Bigfloat) (Bigfloat, Bigfloat) {
 	a := new()
+	b := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sinh_cosh (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
-	return a
+	return a, b
 }
 
 
@@ -2169,12 +2178,13 @@ pub fn sin (b Bigfloat) Bigfloat {
 
 fn C.mpfr_sin_cos (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
-pub fn sin_cos (mut b Bigfloat, c Bigfloat) Bigfloat {
+pub fn sin_cos (c Bigfloat) (Bigfloat, Bigfloat) {
 	a := new()
+	b := new()
 	ctx := get_def_math_ctx()
 	retval := C.mpfr_sin_cos (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
-	return a
+	return a, b
 }
 
 fn C.mpfr_cos (&Bigfloat, &Bigfloat, Round) int

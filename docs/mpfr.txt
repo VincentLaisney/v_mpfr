@@ -49,7 +49,6 @@
 [94mfn[39m [36mconst_catalan[39m() [32mBigfloat[39m
 [94mfn[39m [36mconst_euler[39m() [32mBigfloat[39m
 [94mfn[39m [36mconst_log2[39m() [32mBigfloat[39m
-[94mfn[39m [36mconst_pi[39m() [32mBigfloat[39m
 [94mfn[39m [36mcopysign[39m([94mmut[39m a [32mBigfloat[39m, b [32mBigfloat[39m, c [32mBigfloat[39m, r [32mRound[39m) [32mint[39m
 [94mfn[39m [36mcos[39m(b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36mcosh[39m(b [32mBigfloat[39m) [32mBigfloat[39m
@@ -196,6 +195,7 @@
 [94mfn[39m [36mnrandom[39m(st [94mgmp[39m.[32mRandstate[39m) [32mBigfloat[39m
 [94mfn[39m [36mnumber_p[39m(a [32mBigfloat[39m) [32mint[39m
 [94mfn[39m [36moverflow_p[39m() [32mbool[39m
+[94mfn[39m [36mpi[39m() [32mBigfloat[39m
 [94mfn[39m [36mpow[39m(b [32mBigfloat[39m, c [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36mpow_i64[39m(b [32mBigfloat[39m, i [32mi64[39m) [32mBigfloat[39m
 [94mfn[39m [36mpow_u64[39m(b [32mBigfloat[39m, f [32mu64[39m) [32mBigfloat[39m
@@ -251,9 +251,9 @@
 [94mfn[39m [36msgn[39m(a [32mBigfloat[39m) [32mint[39m
 [94mfn[39m [36msignbit[39m(a [32mBigfloat[39m) [32mint[39m
 [94mfn[39m [36msin[39m(b [32mBigfloat[39m) [32mBigfloat[39m
-[94mfn[39m [36msin_cos[39m([94mmut[39m b [32mBigfloat[39m, c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m [36msin_cos[39m(c [32mBigfloat[39m) (Bigfloat, Bigfloat)
 [94mfn[39m [36msinh[39m(b [32mBigfloat[39m) [32mBigfloat[39m
-[94mfn[39m [36msinh_cosh[39m([94mmut[39m b [32mBigfloat[39m, c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m [36msinh_cosh[39m(c [32mBigfloat[39m) (Bigfloat, Bigfloat)
 [94mfn[39m [36msqr[39m(b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36msqrt[39m(b [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m [36msqrt_u64[39m(f [32mu64[39m) [32mBigfloat[39m
@@ -296,7 +296,9 @@
 [94mfn[39m (b [32mBigfloat[39m) - (c [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m (b [32mBigfloat[39m) * (c [32mBigfloat[39m) [32mBigfloat[39m
 [94mfn[39m (b [32mBigfloat[39m) / (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (a [32mBigfloat[39m) == (b [32mBigfloat[39m) [32mbool[39m
 [94mfn[39m (b [32mBigfloat[39m) % (c [32mBigfloat[39m) [32mBigfloat[39m
+[94mfn[39m (a [32mBigfloat[39m) < (b [32mBigfloat[39m) [32mbool[39m
 [94mtype[39m [32mMpfr_exp[39m = [32mi64[39m
 [94mtype[39m [32mMpfr_prec[39m = [32mi64[39m
 [94menum[39m [32mRound[39m {

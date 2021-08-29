@@ -310,3 +310,34 @@ fn test_pow () {
 	assert mpfr.cmp(e, f) == 0
 
 }
+
+fn test_sin_cos () {
+	a, b := mpfr.sin_cos(mpfr.pi())
+	assert b.str() == '-1'
+	assert mpfr.less_p(a, mpfr.from_f64(1e-15)) == 1
+
+	c, d := mpfr.sin_cos(mpfr.pi() / mpfr.from_u64(2))
+	assert c.str() == '1'
+	assert mpfr.less_p(d, mpfr.from_f64(1e-15)) == 1
+}
+
+fn test_sinh_cosh () {
+	a, b := mpfr.sinh_cosh(mpfr.from_u64(0))
+	assert a.str() == '0'
+	assert b.str() == '1'
+
+	c, d := mpfr.sinh_cosh(mpfr.from_u64(1))
+	assert c.str() == '1.175201193643801' // (e^2 - 1)/(2 e)
+	assert d.str() == '1.543080634815244' // (1 + e^2)/(2 e)
+	e_1 := mpfr.exp(mpfr.from_u64(1))
+	println('constant e: $e_1')
+	e := mpfr.sub_u64(mpfr.pow_u64(e_1, 2), 1) / mpfr.mul_i64(e_1, 2)
+	println('e $e; c $c')
+	// assert e == c // still buggy in v cf. issue  #11317
+	assert mpfr.equal_p(e, c) == 1
+	f := mpfr.add_u64(mpfr.pow_u64(e_1, 2), 1) / mpfr.mul_u64(e_1, 2)
+	println('f $f; d $d')
+	assert (d - f) < mpfr.from_f64(1e-15)
+	assert '${mpfr.const_euler()}' == '5.772156649015329e-1'
+	// euler-macheroni: 0.5772156649015328606065120900824024310421593359399235988057672348...
+}
