@@ -443,6 +443,13 @@ pub fn prec_round (p Mpfr_prec) Bigfloat {
 	return a
 }
 
+pub fn prec_round_ctx (p Mpfr_prec, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_prec_round (&a, p, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_can_round (&Bigfloat, i64, Round, Round, Mpfr_prec) int
 
 pub fn can_round (a Bigfloat, err i64, r1 Round, r2 Round, p Mpfr_prec) int {
@@ -509,11 +516,25 @@ pub fn from_f64 (d f64) Bigfloat {
 	return a
 }
 
+pub fn from_f64_ctx (d f64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_d (&a, d, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_set_flt (&Bigfloat, f32, Round) int
 
 pub fn from_f32 (f f32) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_set_flt (&a, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn from_f32_ctx (f f32, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_set_flt (&a, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -555,11 +576,25 @@ pub fn set_z (b gmp.Bigint) Bigfloat {
 	return a
 }
 
+pub fn set_z_ctx (b gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_z (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_set_z_2exp (&Bigfloat, &gmp.Bigint, i64, Round) int
 
 pub fn set_z_2exp (b gmp.Bigint, e i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_set_z_2exp (&a, &b, e, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn set_z_2exp_ctx (b gmp.Bigint, e i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_set_z_2exp (&a, &b, e, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -596,6 +631,13 @@ pub fn set_f (b gmp.Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn set_f_ctx (b gmp.Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_f (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_cmp_f (&Bigfloat, &gmp.Bigfloat) int
 
 pub fn cmp_f (a Bigfloat, b gmp.Bigfloat) int {
@@ -608,12 +650,23 @@ pub fn get_f (mut a gmp.Bigfloat, b Bigfloat, r Round) int {
 	return C.mpfr_get_f (&a, &b, r)
 }
 
+pub fn get_f_ctx (mut a gmp.Bigfloat, b Bigfloat, r Round, ctx MathContext) int {
+	return C.mpfr_get_f (&a, &b, r)
+}
+
 // #endif
 fn C.mpfr_set_si (&Bigfloat, i64, Round) int
 
 pub fn from_i64 (i i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_set_si (&a, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn from_i64_ctx (i i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_set_si (&a, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -629,6 +682,13 @@ pub fn from_u64 (u u64) Bigfloat {
 	return a
 }
 
+pub fn from_u64_ctx (u u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_ui (&a, u, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_set_si_2exp (&Bigfloat, i64, i64, Round) int
 
 pub fn set_i64_2exp (i i64, e i64) Bigfloat {
@@ -639,11 +699,25 @@ pub fn set_i64_2exp (i i64, e i64) Bigfloat {
 	return a
 }
 
+pub fn set_i64_2exp_ctx (i i64, e i64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_si_2exp (&a, i, e, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_set_ui_2exp (&Bigfloat, u64, i64, Round) int
 
 pub fn set_u64_2exp (u u64, e i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_set_ui_2exp (&a, u, e, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn set_u64_2exp_ctx (u u64, e i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_set_ui_2exp (&a, u, e, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -661,11 +735,25 @@ pub fn set_q (b gmp.Bigrational) Bigfloat {
 	return a
 }
 
+pub fn set_q_ctx (b gmp.Bigrational, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_q (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_mul_q (&Bigfloat, &Bigfloat, &gmp.Bigrational, Round) int
 
 pub fn mul_q (b Bigfloat, c gmp.Bigrational) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul_q (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_q_ctx (b Bigfloat, c gmp.Bigrational, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul_q (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -681,6 +769,13 @@ pub fn div_q (b Bigfloat, c gmp.Bigrational) Bigfloat {
 	return a
 }
 
+pub fn div_q_ctx (b Bigfloat, c gmp.Bigrational, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_div_q (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_add_q (&Bigfloat, &Bigfloat, &gmp.Bigrational, Round) int
 
 pub fn add_q (b Bigfloat, c gmp.Bigrational) Bigfloat {
@@ -691,11 +786,25 @@ pub fn add_q (b Bigfloat, c gmp.Bigrational) Bigfloat {
 	return a
 }
 
+pub fn add_q_ctx (b Bigfloat, c gmp.Bigrational, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_add_q (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sub_q (&Bigfloat, &Bigfloat, &gmp.Bigrational, Round) int
 
 pub fn sub_q (b Bigfloat, c gmp.Bigrational) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sub_q (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sub_q_ctx (b Bigfloat, c gmp.Bigrational, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sub_q (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -724,6 +833,13 @@ pub fn set_str (s &char, b int) Bigfloat {
 	return a
 }
 
+pub fn set_str_ctx (s &char, b int, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set_str (&a, s, b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_init_set_str (&Bigfloat, &char, int, Round) int
 
 pub fn from_str (s string) ?Bigfloat {
@@ -747,11 +863,25 @@ pub fn set4 (b Bigfloat, f int) Bigfloat {
 	return a
 }
 
+pub fn set4_ctx (b Bigfloat, f int, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set4 (&a, &b, ctx.rnd, f)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_abs (&Bigfloat, &Bigfloat, Round) int
 
 pub fn abs (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_abs (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn abs_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_abs (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -767,11 +897,25 @@ pub fn set (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn set_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_set (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_neg (&Bigfloat, &Bigfloat, Round) int
 
 pub fn neg (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_neg (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn neg_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_neg (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -788,6 +932,13 @@ fn C.mpfr_setsign (&Bigfloat, &Bigfloat, int, Round) int
 pub fn setsign (b Bigfloat, i int) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_setsign (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn setsign_ctx (b Bigfloat, i int, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_setsign (&a, &b, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -812,10 +963,18 @@ pub fn (a Bigfloat) f32 () f32 {
 	return C.mpfr_get_flt (&a, ctx.rnd)
 }
 
+pub fn (a Bigfloat) f32_ctx (ctx MathContext) f32 {
+	return C.mpfr_get_flt (&a, ctx.rnd)
+}
+
 fn C.mpfr_get_d (&Bigfloat, Round) f64
 
 pub fn (a Bigfloat) f64 () f64 {
 	ctx := get_def_math_ctx()
+	return C.mpfr_get_d (&a, ctx.rnd)
+}
+
+pub fn (a Bigfloat) f64_ctx (ctx MathContext) f64 {
 	return C.mpfr_get_d (&a, ctx.rnd)
 }
 
@@ -835,9 +994,17 @@ pub fn get_d1 (a Bigfloat) f64 {
 	return C.mpfr_get_d1 (&a)
 }
 
+pub fn get_d1_ctx (a Bigfloat, ctx MathContext) f64 {
+	return C.mpfr_get_d1 (&a)
+}
+
 fn C.mpfr_get_d_2exp (&i64, &Bigfloat, Round) f64
 
 pub fn get_f64_2exp (e &i64, s Bigfloat, r Round) f64 {
+	return C.mpfr_get_d_2exp (e, &s, r)
+}
+
+pub fn get_f64_2exp_ctx (e &i64, s Bigfloat, r Round, ctx MathContext) f64 {
 	return C.mpfr_get_d_2exp (e, &s, r)
 }
 
@@ -853,6 +1020,10 @@ pub fn frexp (e &i64, g Bigfloat, s Bigfloat, r Round) int {
 	return C.mpfr_frexp (e, &g, &s, r)
 }
 
+pub fn frexp_ctx (e &i64, g Bigfloat, s Bigfloat, r Round, ctx MathContext) int {
+	return C.mpfr_frexp (e, &g, &s, r)
+}
+
 fn C.mpfr_get_si (&Bigfloat, Round) i64
 
 pub fn (a Bigfloat) i64 () i64 {
@@ -860,10 +1031,18 @@ pub fn (a Bigfloat) i64 () i64 {
 	return C.mpfr_get_si (&a, ctx.rnd)
 }
 
+pub fn (a Bigfloat) i64_ctx (ctx MathContext) i64 {
+	return C.mpfr_get_si (&a, ctx.rnd)
+}
+
 fn C.mpfr_get_ui (&Bigfloat, Round) u64
 
 pub fn (a Bigfloat) u64 () u64 {
 	ctx := get_def_math_ctx()
+	return C.mpfr_get_ui (&a, ctx.rnd)
+}
+
+pub fn (a Bigfloat) u64_ctx (ctx MathContext) u64 {
 	return C.mpfr_get_ui (&a, ctx.rnd)
 }
 
@@ -966,6 +1145,10 @@ pub fn get_z (a gmp.Bigint, b Bigfloat, r Round) int {
 	return C.mpfr_get_z (&a, &b, r)
 }
 
+pub fn get_z_ctx (a gmp.Bigint, b Bigfloat, r Round, ctx MathContext) int {
+	return C.mpfr_get_z (&a, &b, r)
+}
+
 
 fn C.mpfr_free_str (&char)
 
@@ -984,12 +1167,23 @@ pub fn urandom (mut st gmp.Randstate) Bigfloat {
 	return a
 }
 
+pub fn urandom_ctx (mut st gmp.Randstate, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_urandom (&a, &st, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 // #ifndef _MPFR_NO_DEPRECATED_GRANDOM /* for the test of this function */
 // MPFR_DEPRECATED
 // #endif
 fn C.mpfr_grandom (&Bigfloat, &Bigfloat, &gmp.Randstate, Round)
 
 pub fn grandom (mut a Bigfloat, b Bigfloat, st gmp.Randstate, r Round) {
+	C.mpfr_grandom (&a, &b, &st, r)
+}
+
+pub fn grandom_ctx (mut a Bigfloat, b Bigfloat, st gmp.Randstate, r Round, ctx MathContext) {
 	C.mpfr_grandom (&a, &b, &st, r)
 }
 
@@ -1003,11 +1197,25 @@ pub fn nrandom (st gmp.Randstate) Bigfloat {
 	return a
 }
 
+pub fn nrandom_ctx (st gmp.Randstate, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_nrandom (&a, &st, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_erandom (&Bigfloat, &gmp.Randstate, Round) int
 
 pub fn erandom (st gmp.Randstate) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_erandom (&a, &st, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn erandom_ctx (st gmp.Randstate, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_erandom (&a, &st, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1079,11 +1287,25 @@ pub fn pow (b Bigfloat, c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn pow_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_pow (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_pow_si (&Bigfloat, &Bigfloat, i64, Round) int
 
 pub fn pow_i64 (b Bigfloat, i i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_pow_si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn pow_i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_pow_si (&a, &b, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1099,11 +1321,25 @@ pub fn pow_u64 (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn pow_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_pow_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_ui_pow_ui (&Bigfloat, u64, u64, Round) int
 
 pub fn u64_pow_u64 (u u64, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_ui_pow_ui (&a, u, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn u64_pow_u64_ctx (u u64, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_ui_pow_ui (&a, u, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1119,11 +1355,25 @@ pub fn u64_pow (u u64, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn u64_pow_ctx (u u64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_ui_pow (&a, u, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_pow_z (&Bigfloat, &Bigfloat, &gmp.Bigint, Round) int
 
 pub fn pow_z (b Bigfloat, c gmp.Bigint) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_pow_z (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn pow_z_ctx (b Bigfloat, c gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_pow_z (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1140,6 +1390,13 @@ pub fn sqrt (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn sqrt_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sqrt (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sqrt_ui (&Bigfloat, u64, Round) int
 
 pub fn sqrt_u64 (f u64) Bigfloat {
@@ -1150,11 +1407,25 @@ pub fn sqrt_u64 (f u64) Bigfloat {
 	return a
 }
 
+pub fn sqrt_u64_ctx (f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sqrt_ui (&a, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_rec_sqrt (&Bigfloat, &Bigfloat, Round) int
 
 pub fn rec_sqrt (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_rec_sqrt (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn rec_sqrt_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_rec_sqrt (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1171,6 +1442,13 @@ pub fn (b Bigfloat) + (c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn add_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_add (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sub (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn (b Bigfloat) - (c Bigfloat) Bigfloat {
@@ -1181,11 +1459,25 @@ pub fn (b Bigfloat) - (c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn sub_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sub (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_mul (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn (b Bigfloat) * (c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1218,11 +1510,25 @@ pub fn add_u64 (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn add_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_add_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sub_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn sub_u64 (b Bigfloat, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sub_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sub_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sub_ui (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1238,11 +1544,25 @@ pub fn u64_sub (u u64, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn u64_sub_ctx (u u64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_ui_sub (&a, u, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_mul_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn mul_u64 (b Bigfloat, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul_ui (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1258,11 +1578,25 @@ pub fn div_u64 (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn div_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_div_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_ui_div (&Bigfloat, u64, &Bigfloat, Round) int
 
 pub fn u64_div (u u64, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_ui_div (&a, u, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn u64_div_ctx (u u64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_ui_div (&a, u, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1279,11 +1613,25 @@ pub fn add_i64 (b Bigfloat, i i64) Bigfloat {
 	return a
 }
 
+pub fn add_i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_add_si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sub_si (&Bigfloat, &Bigfloat, i64, Round) int
 
 pub fn sub_i64 (b Bigfloat, i i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sub_si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sub_i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sub_si (&a, &b, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1299,11 +1647,25 @@ pub fn i64_sub (i i64, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn i64_sub_ctx (i i64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_si_sub (&a, i, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_mul_si (&Bigfloat, &Bigfloat, i64, Round) int
 
 pub fn mul_i64 (b Bigfloat, i i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul_si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul_si (&a, &b, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1319,11 +1681,25 @@ pub fn div_i64 (b Bigfloat, i i64) Bigfloat {
 	return a
 }
 
+pub fn div_i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_div_si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_si_div (&Bigfloat, i64, &Bigfloat, Round) int
 
 pub fn i64_div (i i64, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_si_div (&a, i, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn i64_div_ctx (i i64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_si_div (&a, i, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1340,11 +1716,25 @@ pub fn add_f64 (b Bigfloat, f f64) Bigfloat {
 	return a
 }
 
+pub fn add_f64_ctx (b Bigfloat, f f64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_add_d (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sub_d (&Bigfloat, &Bigfloat, f64, Round) int
 
 pub fn sub_f64 (b Bigfloat, f f64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sub_d (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sub_f64_ctx (b Bigfloat, f f64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sub_d (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1360,11 +1750,25 @@ pub fn f64_sub (f f64, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn f64_sub_ctx (f f64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_d_sub (&a, f, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_mul_d (&Bigfloat, &Bigfloat, f64, Round) int
 
 pub fn mul_f64 (b Bigfloat, f f64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul_d (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_f64_ctx (b Bigfloat, f f64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul_d (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1380,11 +1784,25 @@ pub fn div_f64 (b Bigfloat, f f64) Bigfloat {
 	return a
 }
 
+pub fn div_f64_ctx (b Bigfloat, f f64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_div_d (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_d_div (&Bigfloat, f64, &Bigfloat, Round) int
 
 pub fn f64_div (f f64, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_d_div (&a, f, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn f64_div_ctx (f f64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_d_div (&a, f, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1401,12 +1819,26 @@ pub fn sqr (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn sqr_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sqr (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 
 fn C.mpfr_const_pi (&Bigfloat, Round) int
 
 pub fn pi () Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_const_pi (&a, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn pi_ctx (ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_const_pi (&a, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1422,6 +1854,13 @@ pub fn const_log2 () Bigfloat {
 	return a
 }
 
+pub fn const_log2_ctx (ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_const_log2 (&a, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_const_euler (&Bigfloat, Round) int
 
 pub fn const_euler () Bigfloat {
@@ -1432,11 +1871,25 @@ pub fn const_euler () Bigfloat {
 	return a
 }
 
+pub fn const_euler_ctx (ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_const_euler (&a, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_const_catalan (&Bigfloat, Round) int
 
 pub fn const_catalan () Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_const_catalan (&a, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn const_catalan_ctx (ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_const_catalan (&a, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1453,12 +1906,26 @@ pub fn agm (b Bigfloat, c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn agm_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_agm (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 
 fn C.mpfr_log (&Bigfloat, &Bigfloat, Round) int
 
 pub fn log (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_log (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn log_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_log (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1474,11 +1941,25 @@ pub fn log2 (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn log2_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_log2 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_log10 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn log10 (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_log10 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn log10_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_log10 (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1494,11 +1975,25 @@ pub fn log1p (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn log1p_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_log1p (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_log_ui (&Bigfloat, u64, Round) int
 
 pub fn log_u64 (f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_log_ui (&a, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn log_u64_ctx (f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_log_ui (&a, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1515,11 +2010,25 @@ pub fn exp (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn exp_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_exp (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_exp2 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn exp2 (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_exp2 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn exp2_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_exp2 (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1535,11 +2044,25 @@ pub fn exp10 (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn exp10_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_exp10 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_expm1 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn expm1 (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_expm1 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn expm1_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_expm1 (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1555,11 +2078,25 @@ pub fn eint (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn eint_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_eint (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_li2 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn li2 (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_li2 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn li2_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_li2 (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1636,6 +2173,10 @@ pub fn reldiff (mut a Bigfloat, b Bigfloat, c Bigfloat, r Round) {
 	C.mpfr_reldiff (&a, &b, &c, r)
 }
 
+pub fn reldiff_ctx (mut a Bigfloat, b Bigfloat, c Bigfloat, r Round, ctx MathContext) {
+	C.mpfr_reldiff (&a, &b, &c, r)
+}
+
 fn C.mpfr_eq (&Bigfloat, &Bigfloat, u64) int
 
 pub fn eq (a Bigfloat, b Bigfloat, f u64) int {
@@ -1659,11 +2200,25 @@ pub fn mul_2exp (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn mul_2exp_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_mul_2exp (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_div_2exp (&Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn div_2exp (b Bigfloat, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_div_2exp (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn div_2exp_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_div_2exp (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1679,11 +2234,25 @@ pub fn mul_2u64 (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn mul_2u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_mul_2ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_div_2ui (&Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn div_2u64 (b Bigfloat, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_div_2ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn div_2u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_div_2ui (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1699,11 +2268,26 @@ pub fn mul_2i64 (b Bigfloat, i i64) Bigfloat {
 	return a
 }
 
+pub fn mul_2i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_mul_2si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_div_2si (&Bigfloat, &Bigfloat, i64, Round) int
 
 pub fn div_2i64 (b Bigfloat, i i64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_div_2si (&a, &b, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+
+pub fn div_2i64_ctx (b Bigfloat, i i64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_div_2si (&a, &b, i, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1774,6 +2358,13 @@ pub fn rint_roundeven (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn rint_roundeven_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_rint_roundeven (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_rint_round (&Bigfloat, &Bigfloat, Round) int
 
 pub fn rint_round (b Bigfloat) Bigfloat {
@@ -1784,9 +2375,23 @@ pub fn rint_round (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn rint_round_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_rint_round (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_rint_trunc (&Bigfloat, &Bigfloat, Round) int
 
 pub fn rint_trunc (b Bigfloat, r Round) Bigfloat {
+	a := new()
+	retval := C.mpfr_rint_trunc (&a, &b, r)
+	set_retval(retval)
+	return a
+}
+
+pub fn rint_trunc_ctx (b Bigfloat, r Round, ctx MathContext) Bigfloat {
 	a := new()
 	retval := C.mpfr_rint_trunc (&a, &b, r)
 	set_retval(retval)
@@ -1803,11 +2408,25 @@ pub fn rint_ceil (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn rint_ceil_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_rint_ceil (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_rint_floor (&Bigfloat, &Bigfloat, Round) int
 
 pub fn rint_floor (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_rint_floor (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn rint_floor_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_rint_floor (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1823,11 +2442,25 @@ pub fn frac (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn frac_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_frac (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_modf (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn modf (b Bigfloat, c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_modf (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn modf_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_modf (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1843,11 +2476,25 @@ pub fn remquo (i &i64, g Bigfloat, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn remquo_ctx (i &i64, g Bigfloat, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_remquo (&a, i, &g, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_remainder (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn remainder (b Bigfloat, c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_print_ctx()
+	retval := C.mpfr_remainder (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn remainder_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_remainder (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1870,11 +2517,25 @@ pub fn fmod (b Bigfloat, c Bigfloat, r Round) Bigfloat {
 	return a
 }
 
+pub fn fmod_ctx (b Bigfloat, c Bigfloat, r Round, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_fmod (&a, &b, &c, r)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_fmodquo (&Bigfloat, &i64, &Bigfloat, &Bigfloat, Round) int
 
 pub fn fmodquo (i &i64, g Bigfloat, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_fmodquo (&a, i, &g, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn fmodquo_ctx (i &i64, g Bigfloat, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_fmodquo (&a, i, &g, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -1930,6 +2591,11 @@ pub fn fits_intmax_p (a Bigfloat, r Round) int {
 }
 
 
+pub fn fits_intmax_p_ctx (a Bigfloat, r Round, ctx MathContext) int {
+	return C.mpfr_fits_intmax_p (&a, r)
+}
+
+
 fn C.mpfr_extract (&gmp.Bigint, &Bigfloat, u32)
 
 pub fn extract (a gmp.Bigint, s Bigfloat, u u32) {
@@ -1945,6 +2611,11 @@ pub fn swap (mut a Bigfloat, mut b Bigfloat) {
 fn C.mpfr_dump (&Bigfloat)
 
 pub fn mpfr_dump (a Bigfloat) {
+	C.mpfr_dump (&a)
+}
+
+
+pub fn mpfr_dump_ctx (a Bigfloat, ctx MathContext) {
 	C.mpfr_dump (&a)
 }
 
@@ -1982,6 +2653,11 @@ pub fn zero_p (a Bigfloat) bool {
 fn C.mpfr_regular_p (&Bigfloat) int
 
 pub fn regular_p (a Bigfloat) int {
+	return C.mpfr_regular_p (&a)
+}
+
+
+pub fn regular_p_ctx (a Bigfloat, ctx MathContext) int {
 	return C.mpfr_regular_p (&a)
 }
 
@@ -2043,11 +2719,25 @@ pub fn atanh (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn atanh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_atanh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_acosh (&Bigfloat, &Bigfloat, Round) int
 
 pub fn acosh (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_acosh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn acosh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_acosh (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2063,11 +2753,25 @@ pub fn asinh (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn asinh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_asinh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_cosh (&Bigfloat, &Bigfloat, Round) int
 
 pub fn cosh (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_cosh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn cosh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_cosh (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2083,11 +2787,25 @@ pub fn sinh (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn sinh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sinh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_tanh (&Bigfloat, &Bigfloat, Round) int
 
 pub fn tanh (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_tanh (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn tanh_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_tanh (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2105,11 +2823,27 @@ pub fn sinh_cosh (c Bigfloat) (Bigfloat, Bigfloat) {
 }
 
 
+pub fn sinh_cosh_ctx (c Bigfloat, ctx MathContext) (Bigfloat, Bigfloat) {
+	a := new()
+	b := new()
+	retval := C.mpfr_sinh_cosh (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a, b
+}
+
+
 fn C.mpfr_sech (&Bigfloat, &Bigfloat, Round) int
 
 pub fn sech (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sech (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sech_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sech (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2125,6 +2859,13 @@ pub fn csch (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn csch_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_csch (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_coth (&Bigfloat, &Bigfloat, Round) int
 
 pub fn coth (b Bigfloat) Bigfloat {
@@ -2135,12 +2876,25 @@ pub fn coth (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn coth_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_coth (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
 
 fn C.mpfr_acos (&Bigfloat, &Bigfloat, Round) int
 
 pub fn acos (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_acos (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn acos_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_acos (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2156,6 +2910,13 @@ pub fn asin (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn asin_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_asin (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_atan (&Bigfloat, &Bigfloat, Round) int
 
 pub fn atan (b Bigfloat) Bigfloat {
@@ -2166,11 +2927,25 @@ pub fn atan (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn atan_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_atan (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_sin (&Bigfloat, &Bigfloat, Round) int
 
 pub fn sin (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_sin (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn sin_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_sin (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2187,11 +2962,26 @@ pub fn sin_cos (c Bigfloat) (Bigfloat, Bigfloat) {
 	return a, b
 }
 
+pub fn sin_cos_ctx (c Bigfloat, ctx MathContext) (Bigfloat, Bigfloat) {
+	a := new()
+	b := new()
+	retval := C.mpfr_sin_cos (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a, b
+}
+
 fn C.mpfr_cos (&Bigfloat, &Bigfloat, Round) int
 
 pub fn cos (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_cos (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn cos_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_cos (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2207,11 +2997,25 @@ pub fn tan (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn tan_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_tan (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_atan2 (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn atan2 (b Bigfloat, c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_atan2 (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn atan2_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_atan2 (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2227,6 +3031,13 @@ pub fn sec (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn sec_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sec (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_csc (&Bigfloat, &Bigfloat, Round) int
 
 pub fn csc (b Bigfloat) Bigfloat {
@@ -2237,11 +3048,25 @@ pub fn csc (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn csc_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_csc (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_cot (&Bigfloat, &Bigfloat, Round) int
 
 pub fn cot (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_cot (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn cot_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_cot (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2258,11 +3083,25 @@ pub fn hypot (b Bigfloat, c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn hypot_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_hypot (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_erf (&Bigfloat, &Bigfloat, Round) int
 
 pub fn erf (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_erf (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn erf_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_erf (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2278,11 +3117,25 @@ pub fn erfc (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn erfc_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_erfc (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_cbrt (&Bigfloat, &Bigfloat, Round) int
 
 pub fn cbrt (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_cbrt (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn cbrt_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_cbrt (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2301,11 +3154,25 @@ pub fn root (b Bigfloat, f u64) Bigfloat {
 	return a
 }
 
+pub fn root_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_root (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_rootn_ui (&Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn rootn_u64 (b Bigfloat, f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_rootn_ui (&a, &b, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn rootn_u64_ctx (b Bigfloat, f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_rootn_ui (&a, &b, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2321,11 +3188,25 @@ pub fn gamma (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn gamma_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_gamma (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_gamma_inc (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn gamma_inc (b Bigfloat, c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_gamma_inc (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn gamma_inc_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_gamma_inc (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2341,11 +3222,25 @@ pub fn beta (b Bigfloat, c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn beta_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_beta (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_lngamma (&Bigfloat, &Bigfloat, Round) int
 
 pub fn lngamma (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_lngamma (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn lngamma_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_lngamma (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2361,11 +3256,25 @@ pub fn lgamma (i &int, s Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn lgamma_ctx (i &int, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_lgamma (&a, i, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_digamma (&Bigfloat, &Bigfloat, Round) int
 
 pub fn digamma (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_digamma (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn digamma_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_digamma (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2381,11 +3290,25 @@ pub fn zeta (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn zeta_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_zeta (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_zeta_ui (&Bigfloat, u64, Round) int
 
 pub fn zeta_u64 (f u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_zeta_ui (&a, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn zeta_u64_ctx (f u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_zeta_ui (&a, f, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2401,11 +3324,25 @@ pub fn fac_u64 (f u64) Bigfloat {
 	return a
 }
 
+pub fn fac_u64_ctx (f u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_fac_ui (&a, f, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_j0 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn j0 (b Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_j0 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn j0_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_j0 (&a, &b, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2421,11 +3358,25 @@ pub fn j1 (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn j1_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_j1 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_jn (&Bigfloat, i64, &Bigfloat, Round) int
 
 pub fn jn (i i64, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_jn (&a, i, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn jn_ctx (i i64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_jn (&a, i, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2441,6 +3392,13 @@ pub fn y0 (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn y0_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_y0 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_y1 (&Bigfloat, &Bigfloat, Round) int
 
 pub fn y1 (b Bigfloat) Bigfloat {
@@ -2451,11 +3409,25 @@ pub fn y1 (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn y1_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_y1 (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_yn (&Bigfloat, i64, &Bigfloat, Round) int
 
 pub fn yn (i i64, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_yn (&a, i, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn yn_ctx (i i64, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_yn (&a, i, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2472,12 +3444,26 @@ pub fn ai (b Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn ai_ctx (b Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_ai (&a, &b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 
 fn C.mpfr_min (&Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn min (b Bigfloat, c Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_min (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn min_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_min (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2503,12 +3489,26 @@ pub fn dim (b Bigfloat, c Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn dim_ctx (b Bigfloat, c Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_dim (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 
 fn C.mpfr_mul_z (&Bigfloat, &Bigfloat, &gmp.Bigint, Round) int
 
 pub fn mul_z (b Bigfloat, c gmp.Bigint) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_mul_z (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn mul_z_ctx (b Bigfloat, c gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_mul_z (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2524,11 +3524,25 @@ pub fn div_z (b Bigfloat, c gmp.Bigint) Bigfloat {
 	return a
 }
 
+pub fn div_z_ctx (b Bigfloat, c gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_div_z (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_add_z (&Bigfloat, &Bigfloat, &gmp.Bigint, Round) int
 
 pub fn add_z (b Bigfloat, c gmp.Bigint) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_add_z (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn add_z_ctx (b Bigfloat, c gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_add_z (&a, &b, &c, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2544,11 +3558,25 @@ pub fn sub_z (b Bigfloat, c gmp.Bigint) Bigfloat {
 	return a
 }
 
+pub fn sub_z_ctx (b Bigfloat, c gmp.Bigint, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sub_z (&a, &b, &c, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_z_sub (&Bigfloat, &gmp.Bigint, &Bigfloat, Round) int
 
 pub fn z_sub (b gmp.Bigint, s Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_z_sub (&a, &b, &s, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn z_sub_ctx (b gmp.Bigint, s Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_z_sub (&a, &b, &s, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2571,11 +3599,25 @@ pub fn fma (b Bigfloat, c Bigfloat, d Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn fma_ctx (b Bigfloat, c Bigfloat, d Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_fma (&a, &b, &c, &d, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_fms (&Bigfloat, &Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn fms (b Bigfloat, c Bigfloat, d Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_fms (&a, &b, &c, &d, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn fms_ctx (b Bigfloat, c Bigfloat, d Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_fms (&a, &b, &c, &d, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2591,11 +3633,25 @@ pub fn fmma (b Bigfloat, c Bigfloat, d Bigfloat, e Bigfloat) Bigfloat {
 	return a
 }
 
+pub fn fmma_ctx (b Bigfloat, c Bigfloat, d Bigfloat, e Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_fmma (&a, &b, &c, &d, &e, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_fmms (&Bigfloat, &Bigfloat, &Bigfloat, &Bigfloat, &Bigfloat, Round) int
 
 pub fn fmms (b Bigfloat, c Bigfloat, d Bigfloat, e Bigfloat) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_fmms (&a, &b, &c, &d, &e, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn fmms_ctx (b Bigfloat, c Bigfloat, d Bigfloat, e Bigfloat, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_fmms (&a, &b, &c, &d, &e, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2611,11 +3667,25 @@ pub fn sum (b &Bigfloat, n u64) Bigfloat {
 	return a
 }
 
+pub fn sum_ctx (b &Bigfloat, n u64, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_sum (&a, b, n, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 fn C.mpfr_dot (&Bigfloat, &Bigfloat, &Bigfloat, u64, Round) int
 
 pub fn dot (b &Bigfloat, c &Bigfloat, n u64) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_dot (&a, b, c, n, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn dot_ctx (b &Bigfloat, c &Bigfloat, n u64, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_dot (&a, b, c, n, ctx.rnd)
 	set_retval(retval)
 	return a
@@ -2657,12 +3727,26 @@ pub fn subnormalize (i int) Bigfloat {
 	return a
 }
 
+pub fn subnormalize_ctx (i int, ctx MathContext) Bigfloat {
+	a := new()
+	retval := C.mpfr_subnormalize (&a, i, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
 
 fn C.mpfr_strtofr (&Bigfloat, &char, &&char, int, Round) int
 
 pub fn strtofr (s &char, d &&char, b int) Bigfloat {
 	a := new()
 	ctx := get_def_math_ctx()
+	retval := C.mpfr_strtofr (&a, s, d, b, ctx.rnd)
+	set_retval(retval)
+	return a
+}
+
+pub fn strtofr_ctx (s &char, d &&char, b int, ctx MathContext) Bigfloat {
+	a := new()
 	retval := C.mpfr_strtofr (&a, s, d, b, ctx.rnd)
 	set_retval(retval)
 	return a
