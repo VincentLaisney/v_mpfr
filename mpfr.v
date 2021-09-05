@@ -21,6 +21,7 @@
 // SOFTWARE.
 
 module mpfr
+
 import gmp
 import math.mathutil
 
@@ -85,17 +86,8 @@ pub type Mpfr_exp = i64
 //   MPFR_REGULAR_KIND = 3
 // } mpfr_kind_t
 
-fn my_realloc (ptr &byte, old_size u64, new_size u64) &byte {
-	unsafe { return v_realloc (ptr, int(new_size)) }
-}
-
-fn my_free (ptr &byte, size u64) {
-	unsafe{ free (ptr) }
-}
-
-
 fn init() {
-	gmp.mp_set_memory_functions(malloc, my_realloc, my_free)
+	gmp.mp_set_memory_functions(gmp.my_malloc, gmp.my_realloc, gmp.my_free)
 }
 
 // statics functions from mpfr_v_utils.h
